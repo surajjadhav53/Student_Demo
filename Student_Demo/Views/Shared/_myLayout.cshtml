@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @System.Web.Optimization.Styles.Render("~/bundles/allcss")
+    @System.Web.Optimization.Scripts.Render("~/bundles/alljs")
+<link href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet" />
+<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    @*<link href="~/CSS/bootstrap.css" rel="stylesheet" />
+        <script src="~/JS/jquery-3.6.0.js"></script>
+        <script src="~/JS/bootstrap.bundle.js"></script>*@
+</head>
+<body>
+    <div class="container-fluid text-danger row" style="background: #daf3ed;">
+
+        <div class="col-8">
+            <b class="fs-1 p-5 text-center">Student Management System</b>
+        </div>
+        <div class="col-4">
+            @Html.Partial("_LoginView")
+
+        </div>
+    </div>
+    @{
+
+
+        using (var ctx = new DB_STUDENTEntities2())
+        {
+            var olist = ctx.tblFooter1.OrderBy(o => o.SortOrder).Skip(0).Take(10).ToList();
+            @Html.Partial("_Menu", olist)
+        }
+    }
+    @*@{ 
+        @Html.RenderAction("GetLoginView","ActionDemo");
+    }*@
+
+    <div class="container">
+        @RenderBody()
+    </div>
+</body>
+@Html.Partial("_Footer")
+</html>

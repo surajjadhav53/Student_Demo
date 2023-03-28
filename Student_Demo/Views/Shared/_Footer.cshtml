@@ -1,0 +1,62 @@
+﻿
+<style>
+    a {
+        text-decoration: none;
+        
+    }
+</style>
+
+
+<div class="row bg-dark text-white">
+
+    <div class="col-4">
+        <ul style="list-style: none;">
+            @{
+
+                using (var ctx = new DB_STUDENTEntities2())
+                {
+                    var olist = ctx.tblFooter1.OrderBy(o => o.SortOrder).Skip(0).Take(5).ToList();
+                    foreach (var item in olist)
+                    {
+                        <li><a href="@item.LinkUrl">@item.Displaytext</a> </li>
+                    }
+                }
+            }
+            <li></li>
+        </ul>
+    </div>
+    <div class="col-4">
+        <ul style="list-style: none;">
+            @{
+
+
+                using (var ctx = new DB_STUDENTEntities2())
+                {
+                    var olist = ctx.tblFooter1.OrderBy(o => o.SortOrder).Skip(5).Take(5).ToList();
+                    foreach (var item in olist)
+                    {
+                        <li><a href="@item.LinkUrl">@item.Displaytext</a> </li>
+                    }
+                }
+            }
+            <li></li>
+        </ul>
+    </div>
+    <div class="col-4">
+        <ul style="list-style: none;">
+            @{
+
+
+                using (var ctx = new DB_STUDENTEntities2())
+                {
+                    var olist = ctx.tblFooter1.OrderBy(o => o.SortOrder).Skip(10).Take(5).ToList();
+                    foreach (var item in olist)
+                    {
+                        <li><a href="@item.LinkUrl">@item.Displaytext</a> </li>
+                    }
+                }
+            }
+            <li></li>
+        </ul>
+    </div>
+</div>
